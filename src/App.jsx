@@ -122,7 +122,7 @@ const TASK_COLORS = [
   "#14B8A6", "#EF4444", "#3B82F6", "#A855F7", "#F59E0B",
 ];
 
-const PRIORITY_LABELS = { 1: "Низкий", 2: "Средний", 3: "Высокий", 4: "Критический" };
+const PRIORITY_LABELS = { 1: "Low", 2: "Medium", 3: "High", 4: "Critical" };
 const PRIORITY_COLORS = { 1: "#6B7280", 2: "#2D8CF0", 3: "#F5A623", 4: "#E8453C" };
 
 // ─── Components ───
@@ -224,17 +224,17 @@ function GanttChart({ schedule, employees, makespan, taskColorMap }) {
 // ─── Main App ───
 export default function TaskScheduler() {
   const [tasks, setTasks] = useState([
-    { id: 1, name: "API интеграция", duration: 8, priority: 4, currentProgress: 0 },
-    { id: 2, name: "UI дашборда", duration: 6, priority: 3, currentProgress: 0 },
-    { id: 3, name: "База данных", duration: 4, priority: 4, currentProgress: 0 },
-    { id: 4, name: "Тесты", duration: 5, priority: 2, currentProgress: 0 },
-    { id: 5, name: "Документация", duration: 3, priority: 1, currentProgress: 0 },
+    { id: 1, name: "API Integration", duration: 8, priority: 4, currentProgress: 0 },
+    { id: 2, name: "Dashboard UI", duration: 6, priority: 3, currentProgress: 0 },
+    { id: 3, name: "Database Setup", duration: 4, priority: 4, currentProgress: 0 },
+    { id: 4, name: "Testing", duration: 5, priority: 2, currentProgress: 0 },
+    { id: 5, name: "Documentation", duration: 3, priority: 1, currentProgress: 0 },
   ]);
 
   const [employees, setEmployees] = useState([
-    { id: 1, name: "Алексей", startHour: 0, endHour: 24, busyUntil: 0, currentTaskName: "", currentTaskRemaining: 0 },
-    { id: 2, name: "Мария", startHour: 0, endHour: 24, busyUntil: 0, currentTaskName: "", currentTaskRemaining: 0 },
-    { id: 3, name: "Дмитрий", startHour: 0, endHour: 24, busyUntil: 2, currentTaskName: "Ревью", currentTaskRemaining: 2 },
+    { id: 1, name: "Alex", startHour: 0, endHour: 24, busyUntil: 0, currentTaskName: "", currentTaskRemaining: 0 },
+    { id: 2, name: "Maria", startHour: 0, endHour: 24, busyUntil: 0, currentTaskName: "", currentTaskRemaining: 0 },
+    { id: 3, name: "James", startHour: 0, endHour: 24, busyUntil: 2, currentTaskName: "Code Review", currentTaskRemaining: 2 },
   ]);
 
   const [showResult, setShowResult] = useState(false);
@@ -254,7 +254,7 @@ export default function TaskScheduler() {
   }, [showResult, tasks, employees]);
 
   const addTask = () => {
-    setTasks([...tasks, { id: nextTaskId, name: "Новая задача", duration: 4, priority: 2, currentProgress: 0 }]);
+    setTasks([...tasks, { id: nextTaskId, name: "New Task", duration: 4, priority: 2, currentProgress: 0 }]);
     setNextTaskId(nextTaskId + 1);
   };
 
@@ -268,7 +268,7 @@ export default function TaskScheduler() {
   const addEmployee = () => {
     setEmployees([
       ...employees,
-      { id: nextEmpId, name: "Сотрудник", startHour: 0, endHour: 24, busyUntil: 0, currentTaskName: "", currentTaskRemaining: 0 },
+      { id: nextEmpId, name: "Employee", startHour: 0, endHour: 24, busyUntil: 0, currentTaskName: "", currentTaskRemaining: 0 },
     ]);
     setNextEmpId(nextEmpId + 1);
   };
@@ -346,11 +346,11 @@ export default function TaskScheduler() {
           display: "flex", gap: 12, marginBottom: 24, flexWrap: "wrap",
         }}>
           {[
-            { label: "Задач", value: tasks.length, color: "#2D8CF0" },
-            { label: "Сотрудников", value: employees.length, color: "#19B37D" },
-            { label: "Общая работа", value: `${totalWork}ч`, color: "#F5A623" },
-            { label: "Мощность/день", value: `${totalCapacity}ч`, color: "#8B5CF6" },
-            ...(result ? [{ label: "Результат", value: `${result.makespan.toFixed(1)}ч`, color: "#E8453C" }] : []),
+            { label: "Tasks", value: tasks.length, color: "#2D8CF0" },
+            { label: "Employees", value: employees.length, color: "#19B37D" },
+            { label: "Total Work", value: `${totalWork}h`, color: "#F5A623" },
+            { label: "Capacity/Day", value: `${totalCapacity}h`, color: "#8B5CF6" },
+            ...(result ? [{ label: "Result", value: `${result.makespan.toFixed(1)}h`, color: "#E8453C" }] : []),
           ].map((s, i) => (
             <div key={i} style={{
               background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)",
@@ -367,8 +367,8 @@ export default function TaskScheduler() {
         {/* Tabs */}
         <div style={{ display: "flex", gap: 2, marginBottom: 20, background: "rgba(255,255,255,0.03)", borderRadius: 10, padding: 3 }}>
           {[
-            { key: "tasks", label: `Задачи (${tasks.length})` },
-            { key: "employees", label: `Сотрудники (${employees.length})` },
+            { key: "tasks", label: `Tasks (${tasks.length})` },
+            { key: "employees", label: `Employees (${employees.length})` },
           ].map((tab) => (
             <button key={tab.key} onClick={() => setActiveTab(tab.key)} style={{
               ...btnBase,
@@ -712,7 +712,7 @@ export default function TaskScheduler() {
           fontSize: 12, color: "rgba(255,255,255,0.2)",
           textAlign: "center",
         }}>
-          Preemptive Priority Scheduling · Задачи с высоким приоритетом вытесняют низкоприоритетные
+           Preemptive Priority Scheduling · High-priority tasks preempt lower-priority ones
         </div>
       </div>
     </div>
