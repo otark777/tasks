@@ -335,10 +335,10 @@ export default function TaskScheduler() {
           background: "linear-gradient(135deg, #E8E8E8 0%, #888 100%)",
           WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
         }}>
-          Планировщик задач
+          Task Scheduler
         </h1>
         <p style={{ fontSize: 14, color: "rgba(255,255,255,0.35)", margin: "0 0 24px", lineHeight: 1.5 }}>
-          Оптимальное распределение задач · Приоритетное вытеснение · Минимизация времени
+          Optimal task allocation · Preemptive priority scheduling · Minimum completion time
         </p>
 
         {/* Stats bar */}
@@ -414,10 +414,10 @@ export default function TaskScheduler() {
                 <select value={task.priority}
                   onChange={(e) => updateTask(task.id, "priority", parseInt(e.target.value))}
                   style={{ ...inputStyle, cursor: "pointer" }}>
-                  <option value={4}>Критический</option>
-                  <option value={3}>Высокий</option>
-                  <option value={2}>Средний</option>
-                  <option value={1}>Низкий</option>
+                  <option value={4}>Critical</option>
+                  <option value={3}>High</option>
+                  <option value={2}>Medium</option>
+                  <option value={1}>Low</option>
                 </select>
                 <input type="number" min={0} step={0.5} value={task.currentProgress}
                   onChange={(e) => updateTask(task.id, "currentProgress", parseFloat(e.target.value) || 0)}
@@ -441,7 +441,7 @@ export default function TaskScheduler() {
             }}
               onMouseEnter={(e) => { e.target.style.background = "rgba(255,255,255,0.08)"; e.target.style.color = "#E8E8E8"; }}
               onMouseLeave={(e) => { e.target.style.background = "rgba(255,255,255,0.04)"; e.target.style.color = "rgba(255,255,255,0.4)"; }}>
-              + Добавить задачу
+              + Add Task
             </button>
           </div>
         )}
@@ -525,7 +525,7 @@ export default function TaskScheduler() {
         }}
           onMouseEnter={(e) => (e.target.style.boxShadow = "0 4px 30px rgba(25,179,125,0.4)")}
           onMouseLeave={(e) => (e.target.style.boxShadow = "0 4px 20px rgba(25,179,125,0.25)")}>
-          ▶ РАССЧИТАТЬ ОПТИМАЛЬНЫЙ ПЛАН
+          ▶ CALCULATE OPTIMAL PLAN
         </button>
 
         {/* Results */}
@@ -544,7 +544,7 @@ export default function TaskScheduler() {
                   fontSize: 13, color: "rgba(255,255,255,0.35)",
                   letterSpacing: 3, textTransform: "uppercase",
                 }}>
-                  Результат оптимизации
+                 Optimization Result
                 </span>
               </div>
 
@@ -556,7 +556,7 @@ export default function TaskScheduler() {
                   borderRadius: 8, padding: "12px 20px", flex: "1 1 0", minWidth: 140,
                 }}>
                   <div style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", marginBottom: 4, textTransform: "uppercase", letterSpacing: 1 }}>
-                    Всё завершится за
+                     Total Completion Time
                   </div>
                   <div style={{ fontSize: 28, fontWeight: 700, color: "#E8453C" }}>
                     {result.makespan.toFixed(1)}ч
@@ -567,7 +567,7 @@ export default function TaskScheduler() {
                   borderRadius: 8, padding: "12px 20px", flex: "1 1 0", minWidth: 140,
                 }}>
                   <div style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", marginBottom: 4, textTransform: "uppercase", letterSpacing: 1 }}>
-                    Задач выполнено
+                    Tasks Completed
                   </div>
                   <div style={{ fontSize: 28, fontWeight: 700, color: "#19B37D" }}>
                     {Object.values(result.taskCompletions).filter((t) => t.completed).length}/{tasks.length}
@@ -578,7 +578,7 @@ export default function TaskScheduler() {
                   borderRadius: 8, padding: "12px 20px", flex: "1 1 0", minWidth: 140,
                 }}>
                   <div style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", marginBottom: 4, textTransform: "uppercase", letterSpacing: 1 }}>
-                    Переключений
+                    Context Switches
                   </div>
                   <div style={{ fontSize: 28, fontWeight: 700, color: "#8B5CF6" }}>
                     {Math.max(0, result.schedule.length - employees.length)}
@@ -593,7 +593,7 @@ export default function TaskScheduler() {
                 borderRadius: 12, padding: "16px 12px", marginBottom: 24,
               }}>
                 <div style={{ fontSize: 13, color: "rgba(255,255,255,0.35)", marginBottom: 8, textTransform: "uppercase", letterSpacing: 2 }}>
-                  Диаграмма Ганта
+                  Gantt Chart
                 </div>
                 <GanttChart schedule={result.schedule} employees={employees}
                   makespan={result.makespan} taskColorMap={taskColorMap} />
@@ -617,7 +617,7 @@ export default function TaskScheduler() {
                 borderRadius: 12, padding: "16px 16px", marginBottom: 24,
               }}>
                 <div style={{ fontSize: 13, color: "rgba(255,255,255,0.35)", marginBottom: 12, textTransform: "uppercase", letterSpacing: 2 }}>
-                  Порядок завершения задач
+                 Completion Order
                 </div>
                 {Object.entries(result.taskCompletions)
                   .sort((a, b) => (a[1].completedAt || 999) - (b[1].completedAt || 999))
@@ -645,7 +645,7 @@ export default function TaskScheduler() {
                         </div>
                         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
                           <span style={{ fontSize: 14, color: "rgba(255,255,255,0.4)" }}>
-                            {task?.duration}ч работы
+                            {task?.duration}h of work
                           </span>
                           <span style={{
                             fontSize: 16, fontWeight: 600,
@@ -666,7 +666,7 @@ export default function TaskScheduler() {
                 borderRadius: 12, padding: "16px 16px",
               }}>
                 <div style={{ fontSize: 13, color: "rgba(255,255,255,0.35)", marginBottom: 12, textTransform: "uppercase", letterSpacing: 2 }}>
-                  Загрузка сотрудников
+                 Employee Workload
                 </div>
                 {employees.map((emp) => {
                   const empEntries = result.schedule.filter((s) => s.empId === emp.id);
@@ -681,7 +681,7 @@ export default function TaskScheduler() {
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
                         <span style={{ fontSize: 16, fontWeight: 600, color: "#E8E8E8" }}>{emp.name}</span>
                         <span style={{ fontSize: 14, color: "rgba(255,255,255,0.5)" }}>
-                          {totalHours.toFixed(1)}ч работы · {utilization.toFixed(0)}% загрузка
+                          {totalHours.toFixed(1)}h worked · {utilization.toFixed(0)}% utilization
                         </span>
                       </div>
                       <div style={{
@@ -695,7 +695,7 @@ export default function TaskScheduler() {
                         }} />
                       </div>
                       <div style={{ fontSize: 13, color: "rgba(255,255,255,0.35)" }}>
-                        Задачи: {uniqueTasks.join(", ") || "—"}
+                        Tasks: {uniqueTasks.join(", ") || "—"}
                       </div>
                     </div>
                   );
