@@ -158,7 +158,7 @@ function GanttChart({ schedule, employees, makespan, taskColorMap }) {
             />
             <text
               x={leftMargin + h * pxPerHour} y={topMargin - 10}
-              fill="rgba(255,255,255,0.35)" fontSize={10} textAnchor="middle"
+              fill="rgba(255,255,255,0.35)" fontSize={12} textAnchor="middle"
               fontFamily="'JetBrains Mono', monospace"
             >
               {h}ч
@@ -179,7 +179,7 @@ function GanttChart({ schedule, employees, makespan, taskColorMap }) {
                 fill={idx % 2 === 0 ? "rgba(255,255,255,0.02)" : "transparent"} />
               {/* Name */}
               <text x={12} y={y + rowHeight / 2 + 4} fill="rgba(255,255,255,0.7)"
-                fontSize={12} fontFamily="'JetBrains Mono', monospace" fontWeight={500}>
+                fontSize={14} fontFamily="'JetBrains Mono', monospace" fontWeight={500}>
                 {emp.name}
               </text>
               {/* Bars */}
@@ -193,7 +193,7 @@ function GanttChart({ schedule, employees, makespan, taskColorMap }) {
                       rx={4} fill={color} opacity={0.85} />
                     {bw > 40 && (
                       <text x={bx + bw / 2} y={y + rowHeight / 2 + 4}
-                        fill="white" fontSize={10} textAnchor="middle"
+                        fill="white" fontSize={12} textAnchor="middle"
                         fontFamily="'JetBrains Mono', monospace" fontWeight={600}>
                         {entry.taskName}
                       </text>
@@ -212,7 +212,7 @@ function GanttChart({ schedule, employees, makespan, taskColorMap }) {
           stroke="#E8453C" strokeWidth={2} strokeDasharray="4,3"
         />
         <text x={leftMargin + makespan * pxPerHour} y={topMargin + empIds.length * rowHeight + 14}
-          fill="#E8453C" fontSize={10} textAnchor="middle"
+          fill="#E8453C" fontSize={12} textAnchor="middle"
           fontFamily="'JetBrains Mono', monospace" fontWeight={600}>
           {makespan.toFixed(1)}ч
         </text>
@@ -291,7 +291,7 @@ export default function TaskScheduler() {
     borderRadius: 6,
     color: "#E8E8E8",
     padding: "7px 10px",
-    fontSize: 13,
+    fontSize: 16,
     fontFamily: "'JetBrains Mono', monospace",
     outline: "none",
     width: "100%",
@@ -302,7 +302,7 @@ export default function TaskScheduler() {
     border: "none",
     borderRadius: 8,
     padding: "10px 20px",
-    fontSize: 13,
+    fontSize: 16,
     fontWeight: 600,
     cursor: "pointer",
     fontFamily: "'JetBrains Mono', monospace",
@@ -326,7 +326,7 @@ export default function TaskScheduler() {
             width: 8, height: 8, borderRadius: "50%", background: "#19B37D",
             boxShadow: "0 0 8px rgba(25,179,125,0.5)",
           }} />
-          <span style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", letterSpacing: 3, textTransform: "uppercase" }}>
+          <span style={{ fontSize: 16, color: "rgba(255,255,255,0.35)", letterSpacing: 3, textTransform: "uppercase" }}>
             scheduler v1.0
           </span>
         </div>
@@ -337,7 +337,7 @@ export default function TaskScheduler() {
         }}>
           Планировщик задач
         </h1>
-        <p style={{ fontSize: 12, color: "rgba(255,255,255,0.35)", margin: "0 0 24px", lineHeight: 1.5 }}>
+        <p style={{ fontSize: 14, color: "rgba(255,255,255,0.35)", margin: "0 0 24px", lineHeight: 1.5 }}>
           Оптимальное распределение задач · Приоритетное вытеснение · Минимизация времени
         </p>
 
@@ -356,7 +356,7 @@ export default function TaskScheduler() {
               background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)",
               borderRadius: 8, padding: "10px 16px", flex: "1 1 0", minWidth: 100,
             }}>
-              <div style={{ fontSize: 10, color: "rgba(255,255,255,0.35)", marginBottom: 4, textTransform: "uppercase", letterSpacing: 1 }}>
+              <div style={{ fontSize: 12, color: "rgba(255,255,255,0.35)", marginBottom: 4, textTransform: "uppercase", letterSpacing: 1 }}>
                 {s.label}
               </div>
               <div style={{ fontSize: 20, fontWeight: 700, color: s.color }}>{s.value}</div>
@@ -391,10 +391,10 @@ export default function TaskScheduler() {
               gap: 8, marginBottom: 8,
               padding: "0 4px",
             }}>
-              <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: 1 }}>Название</span>
-              <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: 1 }}>Часы</span>
-              <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: 1 }}>Приоритет</span>
-              <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: 1 }}>Прогресс</span>
+              <span style={{ fontSize: 12, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: 1 }}>Название</span>
+              <span style={{ fontSize: 12, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: 1 }}>Часы</span>
+              <span style={{ fontSize: 12, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: 1 }}>Приоритет</span>
+              <span style={{ fontSize: 12, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: 1 }}>Прогресс</span>
               <span />
             </div>
 
@@ -454,12 +454,12 @@ export default function TaskScheduler() {
               gridTemplateColumns: "1fr 60px 60px 70px 100px 70px 36px",
               gap: 6, marginBottom: 8, padding: "0 4px",
             }}>
-              <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: 1 }}>Имя</span>
-              <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: 1 }}>С</span>
-              <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: 1 }}>До</span>
-              <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: 1 }}>Занят до</span>
-              <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: 1 }}>Тек. задача</span>
-              <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: 1 }}>Остаток</span>
+              <span style={{ fontSize: 12, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: 1 }}>Имя</span>
+              <span style={{ fontSize: 12, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: 1 }}>С</span>
+              <span style={{ fontSize: 12, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: 1 }}>До</span>
+              <span style={{ fontSize: 12, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: 1 }}>Занят до</span>
+              <span style={{ fontSize: 12, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: 1 }}>Тек. задача</span>
+              <span style={{ fontSize: 12, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: 1 }}>Остаток</span>
               <span />
             </div>
 
@@ -541,7 +541,7 @@ export default function TaskScheduler() {
                   boxShadow: "0 0 8px rgba(232,69,60,0.5)",
                 }} />
                 <span style={{
-                  fontSize: 11, color: "rgba(255,255,255,0.35)",
+                  fontSize: 13, color: "rgba(255,255,255,0.35)",
                   letterSpacing: 3, textTransform: "uppercase",
                 }}>
                   Результат оптимизации
@@ -555,7 +555,7 @@ export default function TaskScheduler() {
                   background: "rgba(232,69,60,0.08)", border: "1px solid rgba(232,69,60,0.2)",
                   borderRadius: 8, padding: "12px 20px", flex: "1 1 0", minWidth: 140,
                 }}>
-                  <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", marginBottom: 4, textTransform: "uppercase", letterSpacing: 1 }}>
+                  <div style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", marginBottom: 4, textTransform: "uppercase", letterSpacing: 1 }}>
                     Всё завершится за
                   </div>
                   <div style={{ fontSize: 28, fontWeight: 700, color: "#E8453C" }}>
@@ -566,7 +566,7 @@ export default function TaskScheduler() {
                   background: "rgba(25,179,125,0.08)", border: "1px solid rgba(25,179,125,0.2)",
                   borderRadius: 8, padding: "12px 20px", flex: "1 1 0", minWidth: 140,
                 }}>
-                  <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", marginBottom: 4, textTransform: "uppercase", letterSpacing: 1 }}>
+                  <div style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", marginBottom: 4, textTransform: "uppercase", letterSpacing: 1 }}>
                     Задач выполнено
                   </div>
                   <div style={{ fontSize: 28, fontWeight: 700, color: "#19B37D" }}>
@@ -577,7 +577,7 @@ export default function TaskScheduler() {
                   background: "rgba(139,92,246,0.08)", border: "1px solid rgba(139,92,246,0.2)",
                   borderRadius: 8, padding: "12px 20px", flex: "1 1 0", minWidth: 140,
                 }}>
-                  <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", marginBottom: 4, textTransform: "uppercase", letterSpacing: 1 }}>
+                  <div style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", marginBottom: 4, textTransform: "uppercase", letterSpacing: 1 }}>
                     Переключений
                   </div>
                   <div style={{ fontSize: 28, fontWeight: 700, color: "#8B5CF6" }}>
@@ -592,7 +592,7 @@ export default function TaskScheduler() {
                 border: "1px solid rgba(255,255,255,0.06)",
                 borderRadius: 12, padding: "16px 12px", marginBottom: 24,
               }}>
-                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", marginBottom: 8, textTransform: "uppercase", letterSpacing: 2 }}>
+                <div style={{ fontSize: 13, color: "rgba(255,255,255,0.35)", marginBottom: 8, textTransform: "uppercase", letterSpacing: 2 }}>
                   Диаграмма Ганта
                 </div>
                 <GanttChart schedule={result.schedule} employees={employees}
@@ -604,7 +604,7 @@ export default function TaskScheduler() {
                   {tasks.map((t) => (
                     <div key={t.id} style={{ display: "flex", alignItems: "center", gap: 6 }}>
                       <div style={{ width: 10, height: 10, borderRadius: 3, background: taskColorMap[t.id] }} />
-                      <span style={{ fontSize: 11, color: "rgba(255,255,255,0.5)" }}>{t.name}</span>
+                      <span style={{ fontSize: 13, color: "rgba(255,255,255,0.5)" }}>{t.name}</span>
                     </div>
                   ))}
                 </div>
@@ -616,7 +616,7 @@ export default function TaskScheduler() {
                 border: "1px solid rgba(255,255,255,0.06)",
                 borderRadius: 12, padding: "16px 16px", marginBottom: 24,
               }}>
-                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", marginBottom: 12, textTransform: "uppercase", letterSpacing: 2 }}>
+                <div style={{ fontSize: 13, color: "rgba(255,255,255,0.35)", marginBottom: 12, textTransform: "uppercase", letterSpacing: 2 }}>
                   Порядок завершения задач
                 </div>
                 {Object.entries(result.taskCompletions)
@@ -634,9 +634,9 @@ export default function TaskScheduler() {
                             width: 8, height: 8, borderRadius: "50%",
                             background: taskColorMap[parseInt(id)],
                           }} />
-                          <span style={{ fontSize: 13, color: "#E8E8E8" }}>{info.name}</span>
+                          <span style={{ fontSize: 16, color: "#E8E8E8" }}>{info.name}</span>
                           <span style={{
-                            fontSize: 10, padding: "2px 8px", borderRadius: 4,
+                            fontSize: 12, padding: "2px 8px", borderRadius: 4,
                             background: `${PRIORITY_COLORS[task?.priority || 2]}22`,
                             color: PRIORITY_COLORS[task?.priority || 2],
                           }}>
@@ -644,11 +644,11 @@ export default function TaskScheduler() {
                           </span>
                         </div>
                         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-                          <span style={{ fontSize: 12, color: "rgba(255,255,255,0.4)" }}>
+                          <span style={{ fontSize: 14, color: "rgba(255,255,255,0.4)" }}>
                             {task?.duration}ч работы
                           </span>
                           <span style={{
-                            fontSize: 13, fontWeight: 600,
+                            fontSize: 16, fontWeight: 600,
                             color: info.completed ? "#19B37D" : "#E8453C",
                           }}>
                             {info.completed ? `✓ ${info.completedAt.toFixed(1)}ч` : "✗ не завершена"}
@@ -665,7 +665,7 @@ export default function TaskScheduler() {
                 border: "1px solid rgba(255,255,255,0.06)",
                 borderRadius: 12, padding: "16px 16px",
               }}>
-                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", marginBottom: 12, textTransform: "uppercase", letterSpacing: 2 }}>
+                <div style={{ fontSize: 13, color: "rgba(255,255,255,0.35)", marginBottom: 12, textTransform: "uppercase", letterSpacing: 2 }}>
                   Загрузка сотрудников
                 </div>
                 {employees.map((emp) => {
@@ -679,8 +679,8 @@ export default function TaskScheduler() {
                       borderBottom: "1px solid rgba(255,255,255,0.04)",
                     }}>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-                        <span style={{ fontSize: 13, fontWeight: 600, color: "#E8E8E8" }}>{emp.name}</span>
-                        <span style={{ fontSize: 12, color: "rgba(255,255,255,0.5)" }}>
+                        <span style={{ fontSize: 16, fontWeight: 600, color: "#E8E8E8" }}>{emp.name}</span>
+                        <span style={{ fontSize: 14, color: "rgba(255,255,255,0.5)" }}>
                           {totalHours.toFixed(1)}ч работы · {utilization.toFixed(0)}% загрузка
                         </span>
                       </div>
@@ -694,7 +694,7 @@ export default function TaskScheduler() {
                           borderRadius: 3, transition: "width 0.5s",
                         }} />
                       </div>
-                      <div style={{ fontSize: 11, color: "rgba(255,255,255,0.35)" }}>
+                      <div style={{ fontSize: 13, color: "rgba(255,255,255,0.35)" }}>
                         Задачи: {uniqueTasks.join(", ") || "—"}
                       </div>
                     </div>
@@ -709,7 +709,7 @@ export default function TaskScheduler() {
         <div style={{
           marginTop: 40, paddingTop: 16,
           borderTop: "1px solid rgba(255,255,255,0.04)",
-          fontSize: 10, color: "rgba(255,255,255,0.2)",
+          fontSize: 12, color: "rgba(255,255,255,0.2)",
           textAlign: "center",
         }}>
           Preemptive Priority Scheduling · Задачи с высоким приоритетом вытесняют низкоприоритетные
